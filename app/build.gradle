@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "android.marshon.likequanmintv"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+        jumboMode = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 5  //数据库版本号
+
+        daoPackage 'android.marshon.likequanmintv.db'
+        targetGenDir 'src/main/java'
+    }
+    sourceSets {
+        main {
+
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = ['jni']
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/pldroid-player-1.4.0.jar')
+    compile project(':publiclibrary')
+    compile project(':flycotablayout')
+    compile 'junit:junit:4.12'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.qiniu.pili:pili-android-qos:0.8.+'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.google.dagger:dagger:2.2'
+    compile 'org.greenrobot:greendao:3.2.0'
+    provided 'org.greenrobot:greendao-generator:3.0.0'
+    provided 'com.google.dagger:dagger-compiler:2.2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+
+}
