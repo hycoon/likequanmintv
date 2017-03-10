@@ -24,14 +24,12 @@
 ![](http://i.imgur.com/ljx14Sy.png)
 
 
-项目地址：
-https://github.com/a371166028/likequanmintv
 
 声明
 --
 
 这个属于个人开发作品。诸位勿传播于非技术人员，拒绝用于商业用途。***勿大面积传播，以免被查水表谢谢合作^_^***
- 邮箱：itmarshon@163.com    *qq*:371166028
+
 
 
 
